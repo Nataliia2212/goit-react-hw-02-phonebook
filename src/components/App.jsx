@@ -19,6 +19,10 @@ export default class App extends Component {
   addContact = (newContact) => {
     this.setState(prev => ({contacts: [...prev.contacts, newContact]}) )
   }
+
+  deleteContact = (id) => {
+     this.setState(prev => ({contacts: prev.filter(contact => contact.id !== id)}) )
+  }
   
   handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -39,7 +43,7 @@ export default class App extends Component {
         <ContactForm contacts={contacts} onFormSubmit={this.addContact}/>
         <h2>Contacts</h2>
         <Filter filter={filter} onChange={this.handleChangeInput}/>
-        <ContactsList contacts={fiterData}/>
+        <ContactsList contacts={fiterData} onDelete={deleteContact}/>
     </div>
   );
   }
