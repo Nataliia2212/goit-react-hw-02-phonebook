@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import css from './Filter.module.css'
 
 export default function ({filter, onChange}) {
   return (
-    <div>
+    <div className={css.wrap}>
         <p>Find contacts by name</p>
-        <input type="text" value={filter} name="filter" onChange={onChange}/>
+        <input className={css.input} type="text" value={filter} name="filter" onChange={onChange}/>
     </div>
   )
 }

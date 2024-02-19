@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import css from './ContactItem.module.css'
 
-export default function ContactItem({name, number}) {
+export default function ContactItem({id, name, number, onDelete}) {
   return (
-    <li>
+    <li className={css.item}>
         {name}: {number}
-        <button>Delete</button>
+        <button className={css.button} onClick={() => onDelete(id)}>Delete</button>
     </li>
   )
 }

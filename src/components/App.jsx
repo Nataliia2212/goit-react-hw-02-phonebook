@@ -21,7 +21,7 @@ export default class App extends Component {
   }
 
   deleteContact = (id) => {
-     this.setState(prev => ({contacts: prev.filter(contact => contact.id !== id)}) )
+     this.setState(prev => ({contacts: prev.contacts.filter(contact => contact.id !== id)}) )
   }
   
   handleChangeInput = (e) => {
@@ -43,7 +43,7 @@ export default class App extends Component {
         <ContactForm contacts={contacts} onFormSubmit={this.addContact}/>
         <h2>Contacts</h2>
         <Filter filter={filter} onChange={this.handleChangeInput}/>
-        <ContactsList contacts={fiterData} onDelete={deleteContact}/>
+        <ContactsList contacts={fiterData} onDelete={this.deleteContact}/>
     </div>
   );
   }
