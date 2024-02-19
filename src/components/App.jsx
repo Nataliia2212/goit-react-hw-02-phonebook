@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ContactsList from './ContactsList/ContactsList'
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
-import { nanoid } from 'nanoid';
+
 
 export default class App extends Component {
 	state = {
@@ -16,12 +16,10 @@ export default class App extends Component {
 	}
 
   
-  handleSubmit = (newContact) => {
-    const {contacts} = this.state;
-    this.setState({contacts: [...contacts, newContact]} )
-
+  addContact = (newContact) => {
+    this.setState(prev => ({contacts: [...prev.contacts, newContact]}) )
   }
-
+  
   handleChangeInput = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value })
@@ -38,14 +36,13 @@ export default class App extends Component {
     return (
       <div>
         <h1>Phoneboock</h1>
-        <ContactForm onFormSubmit={this.handleSubmit}/>
+        <ContactForm contacts={contacts} onFormSubmit={this.addContact}/>
         <h2>Contacts</h2>
         <Filter filter={filter} onChange={this.handleChangeInput}/>
         <ContactsList contacts={fiterData}/>
-      
     </div>
   );
   }
 }
 
-// onSubmit={this.handleSubmit}
+

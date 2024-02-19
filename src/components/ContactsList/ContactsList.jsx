@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
+import ContactItem from 'components/ContactItem/ContactItem';
 
 export default function ContactsList({contacts}) {
   return (
     <div> 
         
         <ul>
-        {contacts.map(({id, name, number}) => (
-				<li key={id}>{name}: {number}</li>
+        {contacts.map((user) => (
+				<ContactItem key={user.id} {...user}/>
 			))}
         </ul>
     </div>

@@ -6,22 +6,29 @@ export default class ContactForm extends Component {
     state = {
         name: '',
         number: ''
-	}
+	  }
   
 
     handleSubmit = (e) => {
         e.preventDefault()
         const {name, number} = this.state;
-        const {onFormSubmit} = this.props;
-        const newContact = {name, number, id: nanoid(4)}
+        const {onFormSubmit, contacts} = this.props;
+        
+        if (contacts.every(contact => contact.name !== name)) {
+         const newContact = {name, number, id: nanoid(4)}
         onFormSubmit(newContact)
         this.setState({name: '', number: ''})
-      }
-
-  handleChangeInput = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value })
+    } else {
+      return  alert(`${name} is already in contacts`)
+    }
   }
+
+
+
+    handleChangeInput = (e) => {
+      const { name, value } = e.target;
+      this.setState({ [name]: value })
+    }
 
   render() {
     console.log()
