@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './Filter.module.css'
 
-export default function ({filter, onChange}) {
+export default function Filter ({filter, onChange}) {
   return (
     <div className={css.wrap}>
         <p>Find contacts by name</p>
